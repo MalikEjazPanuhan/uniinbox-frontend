@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: #f8fafc;
+    color: #0f172a;
+  }
+
+  .dark body {
+    background: #0f172a;
+    color: #f8fafc;
+  }
+
+  /* Light mode specific overrides */
+  body:not(.dark) .glass-card {
+    @apply bg-white/80 backdrop-blur-sm border border-slate-200/50 shadow-lg shadow-slate-200/30;
+  }
+
+  body:not(.dark) .glass-button {
+    @apply bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200;
+  }
+
+  body:not(.dark) .glass-input {
+    @apply bg-white border-slate-200 text-slate-700;
+  }
+}
+
+@layer components {
+  /* Responsive text size */
+  .text-responsive {
+    @apply text-base md:text-lg;
+  }
+
+  /* Glass card - works in both modes */
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 shadow-2xl p-6;
+  }
+
+  .dark .glass-card {
+    @apply bg-white/5 border-white/10;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent;
+  }
+
+  /* Sidebar link */
+  .sidebar-link {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 
+           hover:bg-white/5 hover:text-white transition-all duration-200 
+           group cursor-pointer;
+  }
+
+  .sidebar-link.active {
+    @apply bg-indigo-600/20 text-indigo-400 shadow-lg shadow-indigo-600/10;
+  }
+
+  /* Button styles */
+  .btn-primary {
+    @apply bg-gradient-to-r from-indigo-500 to-purple-500 text-white 
+           hover:shadow-lg hover:shadow-indigo-500/30 transition-all duration-300;
+  }
+
+  .btn-outline {
+    @apply bg-white/10 backdrop-blur-sm border border-white/20 
+           hover:bg-white/20 transition-all duration-200 text-slate-700 dark:text-slate-200;
+  }
+
+  .btn-ghost {
+    @apply hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-700 dark:text-slate-200;
+  }
+
+  /* Channel card connect button */
+  .btn-connect {
+    @apply px-4 py-2 rounded-xl text-sm font-medium transition-colors;
+  }
+
+  .btn-connect:not(.connected) {
+    @apply bg-indigo-500/10 text-indigo-500 hover:bg-indigo-500/20;
+  }
+
+  .btn-connect.connected {
+    @apply bg-emerald-500/10 text-emerald-500 cursor-default;
+  }
+
+  /* Input styles */
+  .input-glass {
+    @apply w-full px-4 py-3 rounded-xl bg-white/10 dark:bg-white/5 
+           border border-white/20 dark:border-white/10 
+           focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 
+           transition-all text-slate-700 dark:text-slate-200 placeholder:text-gray-400;
+  }
+}
